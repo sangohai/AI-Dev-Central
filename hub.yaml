@@ -1,37 +1,33 @@
-hub_version: "1.0"
+version: "1.1.0"
 owner: "sangohai"
-last_updated: "2025-12-26"
-purpose: "AI 协同开发数字资产调度中心"
+last_sync: "2024-05-21"
 
-# ==========================================
-# 仓库矩阵 (Repository Matrix)
-# ==========================================
-repositories:
-  # 1. 基础设施层 (Infrastructure)
-  - name: "AI-CoDev-Station"
+# 核心资产索引
+registry:
+  - id: "station-engine"
+    repo: "AI-CoDev-Station"
     role: "orchestrator"
-    description: "这是我目前使用的调度中心应用代码库。它负责管理上下文、读写 GitHub 资产并为 AI 提供聚合后的知识流。"
-    tech_stack: ["ES Modules", "GitHub API", "Bootstrap"]
-    status: "active"
+    alias: "🚀 调度引擎"
+    description: "核心 UI 与 逻辑中枢"
+    branch: "main"
 
-  # 2. 中枢管理层 (Central Hub)
-  - name: "AI-Dev-Central"
-    role: "index-vault"
-    description: "整个数字神经系统的中枢仓库，存放 hub.yaml 索引文件，定义全局资产地图。"
-    status: "active"
+  - id: "central-brain"
+    repo: "AI-Dev-Central"
+    role: "brain"
+    alias: "🧠 神经中枢"
+    description: "全域路由与环境配置"
+    branch: "main"
 
-  # 3. 技能/知识库层 (Skill Vaults)
-  # 你可以先预留一个你之前用来测试的库名
-  - name: "Your-Old-Notes-Repo"
-    role: "skill-vault"
-    description: "存放早期的开发笔记和碎片化知识，可作为 AI 的基础 RAG 参考。"
-    tags: ["knowledge-base", "markdown-notes"]
-    status: "legacy"
+  # 预留未来扩展仓库位置（当前可先不建立，或指向现有库测试）
+  - id: "assets-skills"
+    repo: "AI-CoDev-Station" # 暂时指向自己，未来可拆分
+    role: "skills"
+    alias: "🛠️ 技能库"
+    path_prefix: "new_skill/" # 限制只读取技能文件夹
+    branch: "main"
 
-# ==========================================
-# 全局 AI 指引 (Global AI Instructions)
-# ==========================================
-ai_global_protocol:
-  context_mode: "structured"
-  priority: "High"
-  instruction: "当用户提及以上任何仓库名时，请参考对应的 role 和 description 进行逻辑推理。"
+# 启动环境配置
+boot_config:
+  default_repo: "AI-CoDev-Station"
+  theme: "dark"
+  enable_tree_cache: true
